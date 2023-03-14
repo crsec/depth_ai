@@ -40,7 +40,7 @@ export const post: APIRoute = async (context) => {
   }else{
 
  const data = await response.json();
-  return new Response(data)
+  return data
 
   }
 }
