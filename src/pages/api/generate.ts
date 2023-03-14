@@ -38,10 +38,10 @@ export const post: APIRoute = async (context) => {
 
     return new Response(parseOpenAIStream(response))
   }else{
-const response = await fetch('https://api.openai.com/v1/chat/completions', initOptions);
+const response = await fetch('https://api.openai.com/v1/chat/completions', initOptions) as Response
   const json = await response.json();
+ return new Response(json)
 
-  return json
 
   }
 }
