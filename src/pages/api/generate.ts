@@ -7,7 +7,14 @@ import { fetch, ProxyAgent } from 'undici'
 
 const apiKey = import.meta.env.OPENAI_API_KEY
 const https_proxy = import.meta.env.HTTPS_PROXY
-
+function objTostring(obj) {
+  const result = [];
+  for (var k in obj) {
+    console.log(obj, obj[k]);
+    result.push(`${k}=${obj[k]}`);
+  }
+  return result.join("&");
+}
 export const post: APIRoute = async (context) => {
   const body = await context.request.json()
   const { sign, time, messages } = body
@@ -33,7 +40,8 @@ export const post: APIRoute = async (context) => {
   }else{
  const data = parseOpenAIStream(response)
 
-  return new Response(data.data + JSON.stringify(data), { headers: { 'Content-Type': 'application/json' } })
+
+  return new Response(objTostring(data))
 
   }
 }
