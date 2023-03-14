@@ -31,6 +31,6 @@ export const post: APIRoute = async (context) => {
     return new Response(parseOpenAIStream(response))
   }else{
 
-     return new Response(JSON.parse(parseOpenAIStream(response)), {headers: {'content-type': 'application/json'}});
+     return new Response(JSON.parse(parseOpenAIStream(response)));
   }
 }
