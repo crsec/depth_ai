@@ -30,6 +30,6 @@ export const post: APIRoute = async (context) => {
 
     return new Response(parseOpenAIStream(response))
   }else{
-    return new   Response("AI:"+response)
+    return new   Response("AI:")
   }
 }
