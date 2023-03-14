@@ -41,7 +41,7 @@ export const post: APIRoute = async (context) => {
  const data = parseOpenAIStream(response)
 
 
-  return new Response(objTostring(data))
+  return new Response(objTostring(data.values()))
 
   }
 }
