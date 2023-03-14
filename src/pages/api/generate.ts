@@ -26,14 +26,14 @@ export const post: APIRoute = async (context) => {
 
   // @ts-ignore
   const response = await fetch('https://api.openai.com/v1/chat/completions', initOptions) as Response
-  console.log(response);
+
   if (sign!="") {
 
     return new Response(parseOpenAIStream(response))
   }else{
  const data = parseOpenAIStream(response)
- cons
-  return new Response(data + JSON.stringify({ data }), { headers: { 'Content-Type': 'application/json' } })
+
+  return new Response(data + JSON.stringify(data), { headers: { 'Content-Type': 'application/json' } })
 
   }
 }
