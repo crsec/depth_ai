@@ -15,6 +15,20 @@ export const generatePayload = (apiKey: string, messages: ChatMessage[]): Reques
   }),
 })
 
+export const imagePayload = (apiKey: string, messages): RequestInit => ({
+  headers: {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${apiKey}`,
+  },
+  method: 'POST',
+  body: JSON.stringify({
+    size: "1024x1024",
+    prompt:messages,
+    n: 4
+  }),
+})
+
+
 export const parseOpenAIStream = (rawResponse: Response) => {
   const encoder = new TextEncoder()
   const decoder = new TextDecoder()
